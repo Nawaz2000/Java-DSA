@@ -14,7 +14,7 @@ public class IsPalindrome {
 	}
 
 	public static void main(String[] args) {
-		String str = "madam";
+		String str = "12321";
 		int start = 0;
 		int end = str.length()-1;
 		System.out.println(isPalindrome(str, start, end));
