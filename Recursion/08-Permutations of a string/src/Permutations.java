@@ -18,7 +18,7 @@ public class Permutations {
 		for (int i = start; i<end; i++) {
 			str = swap(str,start,i);
 			findPermutations(str, start+1, end);
-            str = swap(str,start,i);
+            str = swap(str,start,i);//
 		}
 		
 	}
