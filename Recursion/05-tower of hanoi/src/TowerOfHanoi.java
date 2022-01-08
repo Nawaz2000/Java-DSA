@@ -14,7 +14,7 @@ public class TowerOfHanoi {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int n = 3;
+		int n = 3; //n represents the number of discs
 		TOH(n, 'A', 'B', 'C');
 	}
 
