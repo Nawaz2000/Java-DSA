@@ -24,20 +24,18 @@ public class FindPairWithGivenSum {
         HashSet<Integer> set = new HashSet<>();
         for (int i : arr)
             set.add(i);
-            
-        int count = 0;    
+               
         for (int i : arr){
         	HashSet<Integer> set2 = (HashSet<Integer>) set.clone();
         	set2.remove(i);
             if (set2.contains(sum - i))
             {
             //	System.out.println("f1: " + i + " f2: " + (sum-i));
-                count = 1;
-                break;
+                return 1;
             }
         }
         
-        return count;
+        return 0;
     }
 	
 	public static void main(String[] args) {
