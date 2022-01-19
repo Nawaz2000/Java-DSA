@@ -45,7 +45,7 @@ public class KMP {
 		int n = str.length();
 		int m = pat.length();
 		int[] lps = findLPSArray(pat);
-//		System.out.println(Arrays.toString(lps));
+		System.out.println(Arrays.toString(lps));
 		
 		while (i<n) {
 			// we start off from i=0, j=0 and match str[i] and pat[j]

@@ -5,7 +5,7 @@ import java.util.Arrays;
  * The prefix and suffix should not overlap.
  * 
  * Ex- 
- * ip = "abca"
+ * i/p = "abca"
  * 
  * here,
  * proper prefix set = {"","a","ab","abc"}
@@ -14,7 +14,7 @@ import java.util.Arrays;
  * we have to find the longest proper prefix which is also a suffix
  * 
  * here,
- * op = "a"
+ * o/p = "a"
  * 
  */
 public class LPS {
