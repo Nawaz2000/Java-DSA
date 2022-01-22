@@ -19,7 +19,7 @@ public class MergeTwoSortedArray {
 		int n2 = arr2.length;
 		int[] res = new int[n1+n2];
 		
-		
+		// i-> for traversing arr1, j-> for traversing arr2
 		int i=0, j=0, resIte=0;
 		while(i<n1 && j<n2) {
 			if (arr1[i] <= arr2[j])
