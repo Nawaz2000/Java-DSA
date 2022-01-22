@@ -10,28 +10,26 @@ public class MergeFunctionOfMergeSort {
 	public static int[] merge(int[] a, int low, int mid, int high) {
 		int[] left = Arrays.copyOfRange(a, low, mid+1);
 		int[] right = Arrays.copyOfRange(a, mid+1, high+1);
-		int n = a.length;
 		int lenL = left.length;
 		int lenR = right.length;
-		int[] res = new int[n];
 		
-		int i=0, j=0, k=0;
+		int i=0, j=0, k=low;
 		while(i<lenL && j<lenR) {
 			if (left[i] <= right[j])
-				res[k++] = left[i++];
+				a[k++] = left[i++];
 			else
-				res[k++] = right[j++];
+				a[k++] = right[j++];
 		}
 		
 		// fill up the remaining array elements
 		// although there are two while loops, only one of them will get executed
 		// because of the above loop, one array (left or right) is already traversed
 		while (i<lenL)
-			res[k++] = left[i++];
+			a[k++] = left[i++];
 		while(j<lenR)
-			res[k++] = right[i++];
+			a[k++] = right[j++];
 		
-		return res;
+		return a;
 	}
 	
 	public static void main(String[] args) {
