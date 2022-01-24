@@ -1,16 +1,18 @@
 import java.util.Arrays;
 /*
- * Lomuto partition- Given an array and an index, partition the array based on the index
+ * Lomuto partition (here it works if pivotIndx is the last index of array... but can be tweaked for
+ * all every index of pivot by swapping (arr[pivotIndx], arr[arr.length-1])- 
+ * Given an array and an index, partition the array based on the index
  * 
  * Idea:
- * variable k (initially indexed to -1) stores the index of end of sub-array where all elements of sub-array is less than
- * pivot
+ * variable k (initially indexed to -1) stores the index of end of sub-array where all elements of 
+ * sub-array is less than pivot
  * 
  * loop through the array and every time arr[i]<pivot, increment k and swap(arr[k],arr[i])
  * 
- * after coming out of the loop, increment k by one and swap(arr[k],arr[i])
+ * after coming out of the loop, increment k by one and swap(arr[k],arr[pivotIndx])
  * 
- * Time compplexity: O(n)
+ * Time complexity: O(n)
  * Auxiliary space: O(1)
  */
 public class Partition {
@@ -20,7 +22,7 @@ public class Partition {
 					// swapped pivot
 		int pivot = arr[pivotIndx];
 		for (int i=0; i<arr.length; i++) {
-			if (arr[i] <= pivot-1) {
+			if (arr[i] < pivot) {
 				k++;
 				// swap
 				int temp = arr[i];
@@ -43,7 +45,7 @@ public class Partition {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] arr = {30,40,20,50,80};
+		int[] arr = {10, 7, 8, 9, 1, 5};
 		int pivotIndx = arr.length-1;
 		System.out.println("Partition at = " + lomutoPartition(arr, pivotIndx));
 
