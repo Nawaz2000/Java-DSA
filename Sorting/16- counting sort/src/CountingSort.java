@@ -12,16 +12,19 @@ public class CountingSort {
 		int[] count = new int[k];
 		int[] res = new int[n];
 		
+		// counts the occurances
 		for (int i=0; i<n; i++)
 			count[arr[i]]++;
 		
-		System.out.println(Arrays.toString(count));
+//		System.out.println(Arrays.toString(count));
 		
+		// Cumulative count the count array
 		for (int i=1; i<k; i++)
 			count[i] += count[i-1];
 		
-		System.out.println(Arrays.toString(count));
+//		System.out.println(Arrays.toString(count));
 		
+		// sorts the elements and places them in the res array
 		for (int i=n-1; i>=0; i--) {
 			res[count[arr[i]]-1] = arr[i];
 			count[arr[i]]--;
