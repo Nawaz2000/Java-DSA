@@ -11,7 +11,7 @@ import java.util.HashSet;
  * Idea: traverse the whole array in a single loop and apply the two sum concept
  * 
  * Time complexity: O(n^2)
- * Auxiliary space: O(1)
+ * Auxiliary space: O(n)
  */
 public class ThreeSum {
 	
