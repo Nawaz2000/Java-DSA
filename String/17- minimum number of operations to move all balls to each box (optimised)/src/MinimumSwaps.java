@@ -18,10 +18,11 @@ import java.util.Arrays;
  * Output: [11,8,5,4,3,4]
  * 
  * Idea: 
- * use two nested loops from 0 to n. In the inner loop, if we encounter boxes[j] == 1,
- * we use res[i] += Math.abs(i-j)
+ * use two loops. First one from 0 to n storing leftSum. 
+ * Second loop from n to 0 storing left sum + right sum
  * 
- * Time complexity: O(n^2)
+ * 
+ * Time complexity: O(n)
  * Auxiliary space: O(n)
  */
 public class MinimumSwaps {
@@ -29,13 +30,22 @@ public class MinimumSwaps {
 	public static int[] minOperations(String boxes) {
         int n = boxes.length();
         int[] res = new int[n];
-        for (int i=0; i<n; i++){
-            for (int j=0; j<n; j++){
-                if (boxes.charAt(j) == '1'){
-                    res[i] = res[i] + Math.abs(i-j);
-                }
-            }
+        for (int i=0; i<n; i++) {
+        	if (boxes.charAt(i) == '1') {
+        		for (int j=0; j<i; j++) {
+        			res[j] += Math.abs(i-j);
+        		}
+        	}
         }
+        
+        for (int i=n-1; i>=0; i--) {
+        	if (boxes.charAt(i) == '1') {
+        		for (int j=i; j<=(n-1); j++) {
+        			res[j] += Math.abs(i-j);
+        		}
+        	}
+        }
+        
         return res;
     }
 	
