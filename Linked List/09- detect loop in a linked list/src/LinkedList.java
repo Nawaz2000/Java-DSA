@@ -17,14 +17,6 @@ class Node{
 
 public class LinkedList {
 	
-	public static void printLinkedList(Node head) {
-		Node currNode = head;
-		while (currNode != null) {
-			System.out.print(currNode.data + " ");
-			currNode = currNode.next;
-		}
-	}
-	
 	public static boolean containsLoop(Node head) {
 		HashSet<Node> set = new HashSet<Node>();
 		Node curr = head;
