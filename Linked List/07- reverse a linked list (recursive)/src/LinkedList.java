@@ -21,7 +21,6 @@ class Node{
 }
 
 public class LinkedList {
-	static Node reversedHead = null;
 	
 	public static void printLinkedList(Node head) {
 		Node currNode = head;
