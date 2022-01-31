@@ -1,9 +1,8 @@
 /*
- * Recursive reverse a doubly linked list
+ * Iterative reverse a doubly linked list
  * 
  * Time complexity: O(n)
  * Auxiliary space: O(1)
- * Space complexity: O(n)
  */
 class Node{
 	int data;
@@ -17,7 +16,6 @@ class Node{
 }
 
 public class LinkedList {
-	// prints the linked list
 	public static void printLinkedList(Node head) {
 		if (head == null)
 			return;
@@ -28,7 +26,6 @@ public class LinkedList {
 		}
 	}
 	
-	// inserts node at the end
 	public static Node insertAtEnd(Node head, int data) {
 		Node newNode = new Node(data);
 		if (head == null)
@@ -43,24 +40,24 @@ public class LinkedList {
 		return head;
 	}
 	
-	public static Node reverse(Node curr, Node prev) {
-		if (curr == null)
-			return prev;
+	public static Node reverse(Node head) {
+		Node curr = head;
+		Node next = null;
+		Node prev = null;
 		
-		// for storing the next element before the next pointer of curr is pointed towards
-		// something else
-		Node temp = curr.next;
+		if (head == null || head.next == null)
+			return head;
 		
-		// for the first time when head is passed, prev is null
-		if (prev == null) {
-			curr.next = curr.prev;
-			curr.prev = temp;			
-		}else {			
+		while (curr != null) {
+			next = curr.next;
 			curr.next = prev;
-			curr.prev = temp;
+			curr.prev = next;
+			if (prev != null)
+				prev.prev = curr;
+			prev = curr;
+			curr = next;
 		}
-		
-		return reverse(temp, curr);
+		return prev;
 		
 	}
 
@@ -72,7 +69,7 @@ public class LinkedList {
 		System.out.println("Before reversal...");
 		printLinkedList(head);
 		
-		head = reverse(head, null);
+		head = reverse(head);
 		System.out.println("\nAfter reversal...");
 		printLinkedList(head);
 
