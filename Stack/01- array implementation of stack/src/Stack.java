@@ -1,5 +1,7 @@
 /*
  * Simple implementation of stack using array
+ * 
+ * Time complexity of all operations: O(1)
  */
 public class Stack {
 	private int[] arr;
