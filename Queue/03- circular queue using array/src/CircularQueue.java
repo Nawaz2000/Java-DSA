@@ -1,5 +1,9 @@
 import java.util.Arrays;
-
+/*
+ * Circular queue array implementation
+ * 
+ * Time complexity: O(1) for all operation
+ */
 class Queue{
 	private int size, capacity;
 	private int[] arr;
@@ -22,9 +26,6 @@ class Queue{
 			size++;
 			return;
 		}
-		
-//		if (Math.abs(front-rear) == 1)
-//			return;
 		
 		if (size == capacity)
 			return;
