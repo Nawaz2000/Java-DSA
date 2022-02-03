@@ -1,4 +1,5 @@
 import java.util.ArrayDeque;
+import java.util.Stack;
 /*
  * Implement queue using stacks
  * 
@@ -14,6 +15,8 @@ import java.util.ArrayDeque;
 public class QueueUsingStacks {
 	static ArrayDeque<Integer> s1 = new ArrayDeque<Integer>(); // resultant queue
 	static ArrayDeque<Integer> s2 = new ArrayDeque<Integer>();
+//	static Stack<Integer> s1 = new Stack<Integer>();
+//	static Stack<Integer> s2 = new Stack<Integer>();
 	
 	public static void enqueue(Integer data) {
 		while (!s1.isEmpty())
