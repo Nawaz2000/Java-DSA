@@ -5,7 +5,7 @@ import java.util.Queue;
  * 
  * Idea: 
  * use a queue to store child nodes at every level
- * 1. Use a queue. Store the root as the first element
+ * 1. Use a queue. Store the root as the first element in q
  * 2. Use a loop till q is not empty
  * 3. In each loop, enqueue the front's left and right child and then dequeue the front
  * 	  display the data
