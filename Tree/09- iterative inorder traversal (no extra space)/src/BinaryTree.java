@@ -1,16 +1,7 @@
 import java.util.ArrayDeque;
-import java.util.HashSet;
-import java.util.LinkedHashSet;
 
 /*
  * Iterative inorder traversal
- * 
- * Idea:
- * 1. Use a set to keep track of items that were once entered into stack
- * 2. Use a loop till stack is not empty
- * 	a. use another loop till top.left is not null and in that loop keep pushing top.left
- * 	b. After coming out of the inner loop, pop top and print it.
- * 	c. if top has a right child, add it to the stack
  * 
  * Time complexity: O(n)
  * Auxiliary space: O(n) (for using set)
@@ -29,20 +20,16 @@ class Node{
 public class BinaryTree {
 	public static void iterativeInorder(Node root) {
 		ArrayDeque<Node> stack = new ArrayDeque<Node>();
-		HashSet<Node> set = new HashSet<Node>();
 		Node curr = root;
-		stack.push(curr);
-		while (!stack.isEmpty()) {
-			while (stack.peek().left != null && !set.contains(stack.peek().left)) {
-				stack.push(stack.peek().left);
-				set.add(stack.peek());
+		
+		while (curr != null || !stack.isEmpty()) {
+			while (curr != null) {
+				stack.push(curr);
+				curr = curr.left;
 			}
-			Node temp = stack.pop();
-			System.out.print(temp.key + " ");
-			if (temp.right != null) {
-				stack.push(temp.right);
-				set.add(stack.peek());
-			}
+			curr = stack.pop();
+			System.out.print(curr.key + " ");
+			curr = curr.right;
 		}
 		
 	}
