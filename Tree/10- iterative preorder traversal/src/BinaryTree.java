@@ -1,12 +1,13 @@
 import java.util.ArrayDeque;
-
 /*
- * Iterative inorder traversal
+ * Iterative preorder traversal
+ * 
+ * Idea: 
+ * Use the inorder traversal technique but here print the node while pushing it into the stack
  * 
  * Time complexity: O(n)
- * Auxiliary space: O(h) (for using set)
+ * Auxiliary space: O(h)
  */
-
 class Node{
 	int key;
 	Node left;
@@ -18,20 +19,19 @@ class Node{
 }
 
 public class BinaryTree {
-	public static void iterativeInorder(Node root) {
+	public static void iterativePreorder(Node root) {
 		ArrayDeque<Node> stack = new ArrayDeque<Node>();
 		Node curr = root;
 		
 		while (curr != null || !stack.isEmpty()) {
 			while (curr != null) {
 				stack.push(curr);
+				System.out.print(curr.key + " ");
 				curr = curr.left;
 			}
 			curr = stack.pop();
-			System.out.print(curr.key + " ");
 			curr = curr.right;
 		}
-		
 	}
 
 	public static void main(String[] args) {
@@ -43,9 +43,8 @@ public class BinaryTree {
 		root.left.right = new Node(50);
 		root.right.right = new Node(70);
 		root.right.right.right = new Node(80);
-//		root.right.right.right.right = new Node(90);
 		
-		iterativeInorder(root);
+		iterativePreorder(root);
 
 	}
 
