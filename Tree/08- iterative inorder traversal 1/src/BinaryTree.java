@@ -13,7 +13,7 @@ import java.util.LinkedHashSet;
  * 	c. if top has a right child, add it to the stack
  * 
  * Time complexity: O(n)
- * Auxiliary space: O(n) (for using set)
+ * Auxiliary space: O(h) (for using set)
  */
 
 class Node{
