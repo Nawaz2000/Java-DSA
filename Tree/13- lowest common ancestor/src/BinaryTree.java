@@ -47,10 +47,13 @@ public class BinaryTree {
 	
 	// finds the lowest common ancestor
 	public static int lowestCommonAncestor(Node root, int key1, int key2) {
-		ArrayDeque<Node> stack1 = new ArrayDeque<Node>();// holds path of 
-		ArrayDeque<Node> stack2 = new ArrayDeque<Node>();
+		ArrayDeque<Node> stack1 = new ArrayDeque<Node>();// holds route of key1
+		ArrayDeque<Node> stack2 = new ArrayDeque<Node>();// holds route of key2
 		findRoute(stack1, root, key1);
 		findRoute(stack2, root, key2);
+		
+		// the below part checks for the closest element that is in both stacks and
+		// if there is any, it returns it
 		
 		HashSet<Integer> set = new HashSet<Integer>();
 
