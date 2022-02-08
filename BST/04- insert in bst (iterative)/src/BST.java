@@ -2,11 +2,11 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 /*
- * Insert a key in a BST (recursive)
+ * Insert a key in a BST (iterative)
  * 
  * Time complexity: O(logn)
  * Auxiliary space: O(1)
- * Space complexity: O(logn)
+ * Space complexity: O(1)
  */
 class Node{
 	int key;
@@ -19,23 +19,29 @@ class Node{
 public class BST {
 	public static Node insert(Node root, int key) {
 		Node temp = new Node(key);
-		if (root == null)
-			return temp;
-		if (key < root.key) {
-			if (root.left == null)
-				root.left = temp;
-			else
-				insert(root.left, key);
+		Node curr = root;
+		if (root == null) {
+			root = temp;
+			return root;
 		}
-		else {
-			if (root.right == null)
-				root.right = temp;
-			else
-				insert(root.right, key);
+		while (curr != null) {
+			if (key < curr.key) {
+				if (curr.left == null) {
+					curr.left = temp;
+					break;
+				}
+				else
+					curr = curr.left;
+			}else {
+				if (curr.right == null) {
+					curr.right = temp;
+					break;
+				}
+				else
+					curr = curr.right;
+			}
 		}
-		
 		return root;
-		
 	}
 	
 	public static void levelOrder(Node root) {
