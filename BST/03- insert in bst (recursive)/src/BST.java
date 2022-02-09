@@ -22,16 +22,18 @@ public class BST {
 		if (root == null)
 			return temp;
 		if (key < root.key) {
-			if (root.left == null)
-				root.left = temp;
-			else
-				insert(root.left, key);
+//			if (root.left == null)
+//				root.left = temp;
+//			else
+//				insert(root.left, key);
+			root.left = insert(root.left, key);
 		}
 		else {
-			if (root.right == null)
-				root.right = temp;
-			else
-				insert(root.right, key);
+//			if (root.right == null)
+//				root.right = temp;
+//			else
+//				insert(root.right, key);
+			root.right = insert(root.right, key);
 		}
 		
 		return root;
