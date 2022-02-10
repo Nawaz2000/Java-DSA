@@ -1,3 +1,7 @@
+import java.util.ArrayDeque;
+import java.util.LinkedList;
+import java.util.Queue;
+
 /*
  * Given a Binary Tree. The task is to print the nodes of the binary tree when viewed 
  * from different sides. That is, the left view of the binary tree will contain only 
@@ -40,30 +44,57 @@ public class BinaryTree {
 	public static void left(Node root) {
 		if (root == null)
 			return;
-		if (root.left == null && root.right == null) {
-			System.out.print(root.key + " ");
-			return;
+		Queue<Node> q = new ArrayDeque<Node>();
+		q.offer(root);
+		while (!q.isEmpty()) {
+			int size = q.size();
+			for (int i=0; i<size; i++) {
+				Node curr = q.poll();
+				if (i == (0))
+					System.out.print(curr.key + " ");
+				if (curr.left != null)
+					q.offer(curr.left);
+				if (curr.right != null)
+					q.offer(curr.right);
+			}
 		}
-		System.out.print(root.key + " ");
-		if (root.left != null)
-			left(root.left);
-		else if (root.right != null)
-			left(root.right);
 	}
 	
 	// prints the right view of a binary tree
 	public static void right(Node root) {
-		if (root == null)
-			return;
-		if (root.left == null && root.right == null) {
-			System.out.print(root.key + " ");
-			return;
-		}
-		System.out.print(root.key + " ");
-		if (root.right != null)
-			right(root.right);
-		else if (root.left != null)
-			right(root.left);
+		if (root == null) {
+            return;
+        }
+ 
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+ 
+        while (!q.isEmpty()) {
+ 
+            // get number of nodes for each level
+            int n = q.size();
+ 
+            // traverse all the nodes of the current level
+            for (int i = 0; i < n; i++) {
+                Node curr = q.peek();
+                q.remove();
+ 
+                // print the last node of each level
+                if (i == n - 1) 
+                    System.out.print(curr.key + " ");
+                
+ 
+                // if left child is not null add it into the queue
+                if (curr.left != null) {
+                    q.add(curr.left);
+                }
+ 
+                // if right child is not null add it into the queue
+                if (curr.right != null) {
+                    q.add(curr.right);
+                }
+            }
+        }
 	}
 
 	public static void main(String[] args) {
