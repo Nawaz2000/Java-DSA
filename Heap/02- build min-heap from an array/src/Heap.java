@@ -50,17 +50,19 @@ class MinHeap {
 	
 	void minHeapify(int[] arr, int i) {
 		int smallest = i;
+		int l = leftChild(i);
+		int r = rightChild(i);
 		
 		// the below if else part finds the index of the smallest among root, left
 		// and right
-		if (rightChild(i) < size) {
-			if (arr[rightChild(i)] < arr[leftChild(i)] && arr[rightChild(i)] < arr[i])
-				smallest = rightChild(i);
-			else if (arr[leftChild(i)] < arr[rightChild(i)] && arr[leftChild(i)] < arr[i])
-				smallest = leftChild(i);
-		}else {
-			if (arr[leftChild(i)] < arr[i])
-				smallest = leftChild(i);
+		if (r < size) {
+			if (arr[r] < arr[l] && arr[r] < arr[i])
+				smallest = r;
+			else if (arr[l] < arr[r] && arr[l] < arr[i])
+				smallest = l;
+		}else {// executes if the root doesn't have a right child
+			if (l<size && arr[l] < arr[i])
+				smallest = l;
 		}
 		
 		// if smallest index found is not equal to the root then call it recursively
