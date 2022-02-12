@@ -42,12 +42,11 @@ public class ContiguousSubarray {
 		for (int i = 0; i < n; i++) {
 			int val = str.charAt(i) - '0';
 
-			if (val == 1) {
-
+			if (val == 1)
 				val = -1;
-			} else {
+			else 
 				val = 1;
-			}
+			
 
 			currsum = Math.max(currsum + val, val);
 
