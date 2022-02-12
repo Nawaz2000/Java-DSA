@@ -3,8 +3,8 @@ import java.util.Arrays;
 /*
  * Given an array and one node which violates the min-heap property, heapify the array
  * 
- * i/p: {1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17}
- * o/p: {17, 15, 13, 9, 6, 5, 10, 4, 8, 3, 1}
+ * i/p: {40,20,30,35,25,80,32,100,70,60}
+ * o/p: {20,25,30,35,40,80,32,100,70,60}
  * 
  * Idea:
  * In each recursive loop,
