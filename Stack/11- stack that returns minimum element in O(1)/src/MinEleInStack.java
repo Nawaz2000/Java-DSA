@@ -47,7 +47,6 @@ public class MinEleInStack {
     // push element x into the stack
     static void push(int x)
     {
-	// Your code here
 	    if (s.isEmpty()){
 	        s.push(x);
 	        minEle = x;
