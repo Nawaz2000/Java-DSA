@@ -19,10 +19,10 @@
  * Time complexity: O(n+m)
  * Auxiliary space: O(1)
  */
-class Node{
+class Node {
 	int data;
 	Node next;
-	
+
 	public Node(int data) {
 		this.data = data;
 		next = null;
@@ -30,7 +30,7 @@ class Node{
 }
 
 public class LinkedList {
-	
+
 	public static void printLinkedList(Node head) {
 		Node currNode = head;
 		while (currNode != null) {
@@ -38,70 +38,77 @@ public class LinkedList {
 			currNode = currNode.next;
 		}
 	}
-	
+
 	public static int findIntersection(Node h1, Node h2) {
-		int res = -1;
 		Node curr1 = h1;
 		Node curr2 = h2;
 		int n = 0, m = 0;
-		
+
 		// count length of curr1
 		while (curr1 != null) {
 			n++;
 			curr1 = curr1.next;
 		}
-		
+
 		// count length of curr2
 		while (curr2 != null) {
 			m++;
 			curr2 = curr2.next;
 		}
-		
-		int diff = Math.abs(n-m);
-		
+
+		int diff = Math.abs(n - m);
+
 		curr1 = h1;
 		curr2 = h2;
-		
-		// traversing the bigger list from the first node till "diff" nodes so that from here 
-		// onwards both the lists have equal no of nodes.
-		if (n>m) {
-			for (int i=1; i<=diff; i++)
+
+		if (n > m) {
+			int count = 0;
+			while (count != diff) {
+				count++;
 				curr1 = curr1.next;
-		}else {
-			for (int i=1; i<=diff; i++)
+			}
+
+			while (curr1.data != curr2.data) {
+				curr1 = curr1.next;
 				curr2 = curr2.next;
+			}
+			return curr1.data;
+		} else {
+			int count = 0;
+			while (count != diff) {
+				count++;
+				curr2 = curr2.next;
+			}
+
+			while (curr1.data != curr2.data) {
+				curr1 = curr1.next;
+				curr2 = curr2.next;
+			}
+
+			return curr1.data;
+
 		}
-		
-		// checking if there is any intersection
-		while (curr1 != null) {
-			if (curr1.data == curr2.data)
-				return curr1.data;
-			curr1 = curr1.next;
-			curr2 = curr2.next;
-		}
-		
-		return res;
 	}
-	
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Node head = new Node(10);
 		head.next = new Node(20);
 		head.next.next = new Node(30);
 		head.next.next.next = new Node(40);
-		
+
 		Node head2 = new Node(5);
 		head2.next = new Node(11);
 		head2.next.next = new Node(19);
 		head2.next.next.next = new Node(25);
 		head2.next.next.next.next = new Node(30);
 		head2.next.next.next.next.next = new Node(40);
-		
+
 		System.out.println("List 1: ");
 		printLinkedList(head);
 		System.out.println("\nList 2: ");
 		printLinkedList(head2);
-		
+
 		System.out.println("\nIntersection at node: " + findIntersection(head, head2));
 
 	}
