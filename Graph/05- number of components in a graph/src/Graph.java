@@ -3,17 +3,13 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Queue;
 /*
- * BFS traversal of a graph when source is given
+ * Find number of components in a graph
  * 
  * Idea: 
- * we use the same bfs technique as used for tree only this time we use an aux array to mark
- * if the vertex was visited before.
+ * use the same technique as bfs traversal of a disjointed graph and count the number of times
+ * the loop runs
  * 
- * As the graph is disjointed, we use an additional HashSet (visited) to mark the nodes visited
- * The execution begins from disjointedBFS. looping from 0 <= i < v. But only executing the
- * loop id i is not found in visited set
- * 
- * Time complexity: O(v), v-> number of vertices in a graph
+ * Time complexity: O(v+e), v-> number of vertices in a graph
  * Auxiliary space: O(v)
  */
 public class Graph {
@@ -30,9 +26,13 @@ public class Graph {
 		}
 	}
 	
+	static int components = 0; // stores the number of components
+	
 	static void BFS(ArrayList<ArrayList<Integer>> graph, int start, HashSet<Integer> visited) {
 		if (graph == null || visited.contains(start))
 			return;
+		components++;
+		System.out.print("a ");
 		Queue<Integer> q = new ArrayDeque<Integer>(); // stores the vertices
 		q.add(start);
 		HashSet<Integer> set = new HashSet<Integer>(); // keeps track of all visited vertices
@@ -57,11 +57,12 @@ public class Graph {
 	}
 	
 	// execution begins here
-	static void disjointedBFS(ArrayList<ArrayList<Integer>> graph, int v) {
+	static void components(ArrayList<ArrayList<Integer>> graph, int v) {
 		// stores the vertices already visited.
 		HashSet<Integer> visited = new HashSet<Integer>();
 		for (int i=0; i<v; i++)
-			BFS(graph, i, visited);		
+			BFS(graph, i, visited);	
+		System.out.println("Number of components: " + components);
 	}
 
 	public static void main(String[] args) {
@@ -83,7 +84,7 @@ public class Graph {
 //		printGraph(graph);
 		
 		System.out.println("BFS:");
-		disjointedBFS(graph, v);
+		components(graph, v);
 
 	}
 
