@@ -23,7 +23,7 @@ public class BinaryTree {
 	public static void bottom(Node root) {
 		if (root == null)
 			return;
-		if (root.left == null && root.right == null)
+		if (root.left == null || root.right == null)
 			System.out.print(root.key + " ");
 		bottom(root.left);
 		bottom(root.right);
@@ -107,7 +107,7 @@ public class BinaryTree {
 		root.right.left = new Node(6);
 		root.right.right = new Node(7);
 		
-		System.out.println("Borrom view: ");
+		System.out.println("Bottom view: ");
 		bottom(root);
 		System.out.println();
 		
