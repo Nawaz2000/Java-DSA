@@ -32,7 +32,6 @@ public class Graph {
 		if (graph == null || visited.contains(start))
 			return;
 		components++;
-		System.out.print("a ");
 		Queue<Integer> q = new ArrayDeque<Integer>(); // stores the vertices
 		q.add(start);
 		HashSet<Integer> set = new HashSet<Integer>(); // keeps track of all visited vertices
