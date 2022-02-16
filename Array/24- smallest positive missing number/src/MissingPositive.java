@@ -1,4 +1,6 @@
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.regex.Pattern;
 
 /*
  * You are given an array arr[] of N integers including 0. The task is to find the 
@@ -39,7 +41,14 @@ public class MissingPositive {
 		// TODO Auto-generated method stub
 		int[] arr = {1,2,3,4,5};
 		System.out.println("Smallest positive missing: " + missingNumber(arr, arr.length));
-
+		String s = "0.0.0.0.";
+		if (s.charAt(0) == '.')
+			s = s.substring(1);
+		if (s.charAt(s.length()-1) == '.')
+			s = s.substring(0, s.length()-1);
+		System.out.println(s);
+		String[] t = s.split(Pattern.quote("."));
+		System.out.println(t.length);
 	}
 
 }
