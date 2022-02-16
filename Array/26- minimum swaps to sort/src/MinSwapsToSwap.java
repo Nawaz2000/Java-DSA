@@ -50,7 +50,7 @@ public class MinSwapsToSwap {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] arr = {10, 19, 6, 3, 5};
+		int[] arr = {4,5,2,1,5};
 		System.out.println(findMinSwaps(arr));
 
 	}
