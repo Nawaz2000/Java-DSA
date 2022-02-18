@@ -1,53 +1,70 @@
-import java.util.Arrays;
-
+import java.util.Stack;
+/*
+ * Given a string ‘str’ of digits and an integer 'n', build the lowest possible number 
+ * by removing ‘n’ digits from the string and not changing the order of input digits.
+ * 
+ * Input: str = "4325043", n = 3
+ * Output: "2043"
+ * 
+ * Input: str = "765028321", n = 5
+ * Output: "0221"
+ * 
+ * Input: str = "121198", n = 2
+ * Output: "1118"
+ * 
+ * Time complexity: O(n)
+ * Auxiliary space: O(n)
+ */
 public class BuildSmallest {
 	static String buildLowestNumber(String str, int k) {
-        // code here
-        if (k==0)
+		// code here
+		StringBuilder result = new StringBuilder();
+        
+        // We have to delete all digits
+        if (k >= str.length()) {
+            return "0";
+        }
+        // Nothing to delete
+        if (k == 0) {
             return str;
-        if (k == str.length())
-            return "";
-        
-        int n = str.length();
-        
-        char[] arr = str.toCharArray();
-        System.out.println(Arrays.toString(arr));
-        for (int i=0; i<n-1; i++){
-        	if (k==0)
-        		break;
-            if (arr[i] > arr[i+1]) {
-            	arr[i] = '@';
-            	k--;
+        }
+        Stack<Character> s = new Stack<Character>();
+ 
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+           
+            // Removing all digits in stack that are greater
+            // than this digit(since they have higher
+            // weightage)
+            while (!s.isEmpty() && k > 0 && s.peek() > c) {
+                s.pop();
+                k--;
             }
+            // ignore pushing 0
+            if (!s.isEmpty() || c != '0')
+                s.push(c);
         }
-        int i=n-1;
-        while (k != 0 && i>=0) {
-        	arr[i--] = '@';
-        	k--;
+       
+        // If our k isnt 0 yet then we keep popping out the
+        // stack until k becomes 0
+        while (!s.isEmpty() && k > 0) {
+            k--;
+            s.pop();
         }
-        i=0;	
-        str = "";
-        for (i=0; i<n; i++) {
-        	if (arr[i] != '@')
-        		str = str + arr[i];
+        if (s.isEmpty())
+            return "0";
+        while (!s.isEmpty()) {
+            result.append(s.pop());
         }
-        
-        n = str.length();
-        arr = str.toCharArray();
-        i=0;
-        System.out.println(Arrays.toString(arr));
-        StringBuilder sb = new StringBuilder();
-        for (i=0; i<n; i++) {
-        	if (arr[i] != '@')
-        		sb.append(arr[i]);
-        }
-        return sb.toString();
-    }
+        String str2 = result.reverse().toString();
+ 
+        return str2;
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String s = "44743";
-		int k = 4;
+		String s = "10056";
+		int k = 3;
 		System.out.println(buildLowestNumber(s, k));
 
 	}
