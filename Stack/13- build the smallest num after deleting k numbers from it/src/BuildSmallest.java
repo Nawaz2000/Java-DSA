@@ -33,9 +33,8 @@ public class BuildSmallest {
         for (int i = 0; i < str.length(); i++) {
             char c = str.charAt(i);
            
-            // Removing all digits in stack that are greater
-            // than this digit(since they have higher
-            // weightage)
+            // Removing all digits in stack that are greater than this digit(since they 
+            // have higher weightage)
             while (!s.isEmpty() && k > 0 && s.peek() > c) {
                 s.pop();
                 k--;
