@@ -27,7 +27,7 @@ import java.util.Comparator;
  * 	else
  * 		set temp's previous empty space to 1 and res[0]++ and res[1]+=currJob.profit
  * 
- * Time complexity: O(nlogn)
+ * Time complexity: O(n^2)
  * Auxiliary space: O(max(deadline))
  */
 class Job{
