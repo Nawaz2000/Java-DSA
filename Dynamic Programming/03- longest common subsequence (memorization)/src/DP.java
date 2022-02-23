@@ -30,13 +30,13 @@ public class DP {
 		if (memo[n][m] != -1)
 			return memo[n][m];
 		
-		// if it is the first character, we set memo[n][m] to 0
+		// if length of either string is 0
 		if (n == 0 || m == 0)
 			memo[n][m] = 0;
 		else {
 			if (s1.charAt(n-1) == s2.charAt(m-1))
 				memo[n][m] = 1 + lcs(s1, s2, n-1, m-1);
-			else
+			else 
 				memo[n][m] = Math.max(lcs(s1, s2, n-1, m), lcs(s1, s2, n, m-1));
 		}
 		return memo[n][m];
