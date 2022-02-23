@@ -1,6 +1,6 @@
 import java.util.Arrays;
 /*
- * Fibonacci series using DP
+ * Fibonacci series using DP (top down/ memorization)
  * 
  * Time complexity: O(n)
  * Auxiliary space: O(n)
