@@ -29,6 +29,8 @@ public class DP {
 
 		for (int i=1; i<=sum; i++) {
 			for (int j=1; j<=n; j++) {
+				// memo[i][j] indicates the number of combination we can get from sum i and
+				// coins from 1 to j
 				memo[i][j] = memo[i][j-1];
 				if (coins[j-1] <= i)
 					memo[i][j] += memo[i-coins[j-1]][j];

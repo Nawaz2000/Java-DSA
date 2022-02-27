@@ -36,8 +36,8 @@ public class DP {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String s1 = "AGGTAB";
-	    String s2 = "GXTXAYB";
+		String s1 = "sunday";
+	    String s2 = "saturday";
 	    System.out.println("Max length: " + lcs(s1, s2));
 
 	}
