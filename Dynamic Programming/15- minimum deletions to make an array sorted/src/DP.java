@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /*
  * Given an array arr of size N, the task is to remove or delete the minimum number of elements 
  * from the array so that when the remaining elements are placed in the same sequence order form 
@@ -40,12 +42,14 @@ public class DP {
 				memo[ceil] = arr[i];
 			}
 		}
+		
+		System.out.println(Arrays.toString(memo));
 		return n-last;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int[] arr = {5, 6, 1, 7, 4};
+		int[] arr = {20, 8, 27, 37, 9, 12, 46};
 		int n = arr.length;
 		System.out.println(minDeletions(arr, n));
 
