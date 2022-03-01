@@ -11,34 +11,23 @@ import java.util.Arrays;
  * arr[] = {2,3}, n=7
  * o/p: 3 (cuts: 2,2,3)
  * 
- * Time complexity: O(n)
+ * Time complexity: O(n*m)
  * Auxiliary space: O(n)
  */
 public class DP {
 	static int[] memo;
 	
 	static int cutRod(int[] arr, int n) {
-		if (memo[n] != Integer.MIN_VALUE)
-			return memo[n];
-		System.out.println("n = " + n);
-		if (n==0)
-			return 0;
-		
-		int max = Integer.MIN_VALUE;
-		for (int i=0; i<arr.length; i++) {
-			if (arr[i] <= n)
-				max = Integer.max(max, cutRod(arr, n-arr[i]));
-			else
-				max = -1;
+		for (int sum=1; sum<=n; sum++) {
+			for (int j=0; j<arr.length; j++) {
+				if (sum-arr[j] >= 0)
+					memo[sum] = Math.max(memo[sum], memo[sum-arr[j]]);
+			}
+			
+			if (memo[sum] != -1)
+				memo[sum]++;
 		}
-		
-		if (max<0) {
-			memo[n] = -1;
-			return -1;
-		}
-		
-		memo[n] = max+1;
-		return max+1;
+		return memo[n];
 	}
 
 	public static void main(String[] args) {
@@ -46,10 +35,11 @@ public class DP {
 		int arr[] = {2,3};
         int target = 7;
         memo = new int[target+1];
-        Arrays.fill(memo, Integer.MIN_VALUE);
+        Arrays.fill(memo, -1);
+        memo[0] = 0;
         System.out.println("Maximum Obtainable Value is " +
                             cutRod(arr, target));
-        System.out.println(Arrays.toString(memo));
+//        System.out.println(Arrays.toString(memo));
 
 	}
 
