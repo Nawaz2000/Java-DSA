@@ -1,20 +1,5 @@
 import java.util.Arrays;
-/*
- * Given an positive integer N and a list of N integers A[]. Each element in the array 
- * denotes the maximum length of jump you can cover. Find out if you can make it to the last 
- * index if you start at the first index of the list.
- * 
- * Input:
- * N = 6
- * A[] = {1, 2, 0, 3, 0, 0} 
- * Output:
- * 1
- * Explanation:
- * Jump 1 step from first index to
- * second index. Then jump 2 steps to reach 
- * 4th index, and now jump 2 steps to reach
- * the end.
- */
+
 public class DP {
 	static int[] memo;
 	static int minJumps(int[] arr, int n, int indx) {
