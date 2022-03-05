@@ -5,7 +5,7 @@ import java.util.Stack;
  * element. The overall stack should not be changed.
  * 
  * Time complexity: O(n)
- * Auxiliary spacec: O(1)
+ * Auxiliary space: O(1)
  */
 public class MyStack {
 	static boolean pairWiseConsecutive(Stack<Integer> st)
