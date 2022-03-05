@@ -44,10 +44,7 @@ public class DP {
 		// TODO Auto-generated method stub
 		int[] arr = { 4, 1, 5, 3, 1, 3, 2, 1, 8 };
 		int indx = 0;
-		int n = arr.length;
-		memo = new int[n + 1];
-		Arrays.fill(memo, -1);
-		System.out.println("Min jumps: " + minJumps(arr, 0, indx));
+		System.out.println("Min jumps: " + minJumps(arr, 0, arr.length));
 
 	}
 
