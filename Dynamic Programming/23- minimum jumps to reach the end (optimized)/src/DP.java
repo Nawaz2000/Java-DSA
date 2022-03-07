@@ -1,4 +1,5 @@
 import java.util.Arrays;
+
 /*
  * Given an positive integer N and a list of N integers A[]. Each element in the array 
  * denotes the maximum length of jump you can cover. Find out if you can make it to the last 
@@ -15,36 +16,34 @@ import java.util.Arrays;
  * 4th index, and now jump 2 steps to reach
  * the end.
  * 
- * Time complexity: O(n^2)
+ * Time complexity: O(n)
  */
 public class DP {
-	static int minJumps(int[] A, int idx, int N) {
-		if (idx == N - 1) {
-			return 1;
-		}
-
-		if (idx >= N) {
+	static int minJumps(int[] arr) {
+		// if first element is 0 and there is only one element we need 0 steps
+		if (arr[0] == 0 && arr.length == 1)
 			return 0;
-		}
+		// if the first element is 0, we cannot move further
+		if (arr[0] == 0)
+			return -1;
+		int jumps = 0, currEnd = 0, currFarthest = 0;
 
-		int jumps = A[idx];
-
-		for (int i = 1; i <= jumps; i++) {
-			int ans = minJumps(A, idx + i, N);
-			if (ans == 1) {
-				return ans;
+		for (int i = 0; i < arr.length - 1; i++) {
+			currFarthest = Math.max(currFarthest, i + arr[i]);
+			if (i == currEnd) {
+				if (i == currFarthest)
+					return -1;
+				jumps++;
+				currEnd = currFarthest;
 			}
 		}
-
-		return 0;
+		return jumps;
 	}
-
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		int[] arr = { 4, 1, 5, 3, 1, 3, 2, 1, 8 };
-		int indx = 0;
-		System.out.println("Min jumps: " + minJumps(arr, 0, arr.length));
+		System.out.println("Min jumps: " + minJumps(arr));
 
 	}
 
