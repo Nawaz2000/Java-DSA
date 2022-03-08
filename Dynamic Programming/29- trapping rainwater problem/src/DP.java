@@ -21,7 +21,8 @@ import java.util.Arrays;
  * bar in linear time. Then use these pre-computed values to find the amount of water in 
  * every array element.
  * 
- * 
+ * Time complexity: O(n)
+ * Auxiliary space: O(n)
  */
 public class DP {
 	static long trappingWater(int arr[], int n) {
