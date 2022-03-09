@@ -23,6 +23,8 @@ class Node{
 }
 
 public class AVL {
+	static int res = 0;
+	
 	// left rotate
 	public static Node rotateRight(Node y) {
 		Node x = y.left;
@@ -65,6 +67,12 @@ public class AVL {
         return N.height;
     }
 	
+	public static int findHeight(Node root) {
+		if (root == null)
+			return 0;
+		return 1 + Math.max(height(root.left), height(root.right));
+	}
+	
 	public static Node insert(Node root, int key) {
 		// if tree with current root is empty
 		if (root == null)
@@ -72,8 +80,11 @@ public class AVL {
 		// bst insert
 		if (key < root.key)
 			root.left = insert(root.left, key);
-		else if (key > root.key)
+		else if (key > root.key) {
+//			if (root.left != null)
+				res += findHeight(root.left);
 			root.right = insert(root.right, key);
+		}
 		else // rejects duplicate values
 			return root;
 		
@@ -121,13 +132,13 @@ public class AVL {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Node root = insert(null, 10);
-		root = insert(root, 20);
-		root = insert(root, 30);
-		root = insert(root, 40);
-		root = insert(root, 50);
-		root = insert(root, 25);
-		levelOrder(root);
+		int arr[] = {5, 4, 3, 2, 1};
+		int n = arr.length;
+		Node root = null;
+		for (int i=n-1; i>=0; i--)
+			root = insert(root, arr[i]);
+		
+		System.out.println(res);
 
 	}
 
